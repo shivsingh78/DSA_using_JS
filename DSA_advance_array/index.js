@@ -74,3 +74,20 @@
 // rightRotate(arr3, k, arr3.length - 1);
 // console.log(arr3);
 
+//remove duplicate element from sorted array
+
+// function removeDuplicateFromSorted(arr) {
+//   let j = 1;
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     if (arr[i] != arr[i + 1]) {
+//       arr[j] = arr [i + 1];
+//       j++;
+//     }
+//   }
+//   arr.length=j
+//   console.log(arr);
+//   console.log(j);
+// }
+// console.log(removeDuplicateFromSorted([0, 0, 1, 1, 2, 2, 3, 3]));
+
+// merge two sorted array
