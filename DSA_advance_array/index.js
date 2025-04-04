@@ -92,23 +92,50 @@
 
 // merge two sorted array
 
-function mergeTwoSortedArray(arr1, arr2) {
-  let merge = new Array(arr1.length + arr2.length);
-  let i = (j = k = 0);
+// function mergeTwoSortedArray(arr1, arr2) {
+//   let merge = new Array(arr1.length + arr2.length);
+//   let i = j = k = 0;
 
-  while (i < arr1.length && j < arr2.length) {
-    if (arr1[i] < arr2[j]) {
-      merge[k++] = arr1[i++];
-    } else {
-      merge[k++] = arr2[j++];
-    }
-  }
-  while (j < arr2.length) {
-    merge[k++] = arr2[j++];
-  }
-  while (i < arr1.length) {
-    merge[k++] = arr1[i++];
-  }
-  console.log(merge);
+//   while (i < arr1.length && j < arr2.length) {
+//     if (arr1[i] < arr2[j]) {
+//       merge[k++] = arr1[i++];
+//     } else {
+//       merge[k++] = arr2[j++];
+//     }
+//   }
+//   while (j < arr2.length) {
+//     merge[k++] = arr2[j++];
+//   }
+//   while (i < arr1.length) {
+//     merge[k++] = arr1[i++];
+//   }
+//   console.log(merge);
+// }
+// mergeTwoSortedArray([1, 2, 3, 4], [6, 7, 8, 9]);
+
+
+function mergeSortedArray(arr1,m,arr2,n){
+ let removeZero=arr1.slice(0,m)
+
+ let merge = removeZero.concat(arr2)
+ 
+ merge.sort((a,b)=> a-b)
+
+ for(let i=0; i<removeZero.length; i++){
+  arr1[i] = merge[i]
+ }
+ 
+ 
+ 
 }
-mergeTwoSortedArray([1, 2, 3, 4], [6, 7, 8, 9]);
+mergeSortedArray([1,2,3,0,0,0],3,[10,5,6],3)
+
+
+let zerosRemoved = nums1.slice(0,m)
+let combinedArray = zerosRemoved.concat(nums2)    
+combinedArray.sort((a,b)=>{
+    return a-b;
+})
+for(let i=0;i<combinedArray.length;i++){
+    nums1[i] = combinedArray[i]
+}
