@@ -113,29 +113,23 @@
 // }
 // mergeTwoSortedArray([1, 2, 3, 4], [6, 7, 8, 9]);
 
+// best time to buy and sell stock
 
-function mergeSortedArray(arr1,m,arr2,n){
- let removeZero=arr1.slice(0,m)
+// function bestTimeToBuyAndSellStock(arr) {
+//   let maxProfit = 0;
+//   let minProfit = arr[0];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] < minProfit) {
+//       minProfit = arr[i];
+//     }
+//     let profit = arr[i] - minProfit;
 
- let merge = removeZero.concat(arr2)
+//     maxProfit = Math.max(maxProfit, profit);
+//   }
+//  console.log(maxProfit);
  
- merge.sort((a,b)=> a-b)
+// }
 
- for(let i=0; i<removeZero.length; i++){
-  arr1[i] = merge[i]
- }
- 
- 
- 
-}
-mergeSortedArray([1,2,3,0,0,0],3,[10,5,6],3)
+// bestTimeToBuyAndSellStock([2, 4, 1]);
 
-
-let zerosRemoved = nums1.slice(0,m)
-let combinedArray = zerosRemoved.concat(nums2)    
-combinedArray.sort((a,b)=>{
-    return a-b;
-})
-for(let i=0;i<combinedArray.length;i++){
-    nums1[i] = combinedArray[i]
-}
+//TODO: leetcode: best time to buy and sell stock problem 2
