@@ -127,9 +127,29 @@
 //     maxProfit = Math.max(maxProfit, profit);
 //   }
 //  console.log(maxProfit);
- 
+
 // }
 
 // bestTimeToBuyAndSellStock([2, 4, 1]);
 
-//TODO: leetcode: best time to buy and sell stock problem 2
+//TODO: leetcode: best time to buy and sell stock problem 2,3,etc.
+
+function Sort(arr) {
+  let j = 0;
+  let k = arr.length-1 ;
+  let i = 0;
+  while (i <= k)
+    if (arr[i] === 0 ) {
+      [arr[j], arr[i]] = [arr[i], arr[j]];
+      j++;
+      i++;
+    } else if (arr[i] === 2) {
+      [arr[k], arr[i]] = [arr[i], arr[k]];
+      k--;
+    } else {
+      i++;
+    }
+  console.log(arr);
+}
+
+Sort([2, 0, 2, 1, 1, 0]);
