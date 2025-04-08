@@ -134,22 +134,44 @@
 
 //TODO: leetcode: best time to buy and sell stock problem 2,3,etc.
 
-function Sort(arr) {
-  let j = 0;
-  let k = arr.length-1 ;
-  let i = 0;
-  while (i <= k)
-    if (arr[i] === 0 ) {
-      [arr[j], arr[i]] = [arr[i], arr[j]];
-      j++;
-      i++;
-    } else if (arr[i] === 2) {
-      [arr[k], arr[i]] = [arr[i], arr[k]];
-      k--;
-    } else {
-      i++;
-    }
-  console.log(arr);
-}
+// function Sort(arr) {
+//   let j = 0;
+//   let k = arr.length-1 ;
+//   let i = 0;
+//   while (i <= k)
+//     if (arr[i] === 0 ) {
+//       [arr[j], arr[i]] = [arr[i], arr[j]];
+//       j++;
+//       i++;
+//     } else if (arr[i] === 2) {
+//       [arr[k], arr[i]] = [arr[i], arr[k]];
+//       k--;
+//     } else {
+//       i++;
+//     }
+//   console.log(arr);
+// }
 
-Sort([2, 0, 2, 1, 1, 0]);
+// Sort([2, 0, 2, 1, 1, 0]);
+
+function subArray(arr) {
+  let sum = 0
+  let maxSum = -Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    
+    
+    if (sum > maxSum) {
+      maxSum = sum;
+    
+    }
+    if (sum < 0) {
+      sum = 0;
+    }
+    
+  }
+ return maxSum
+ 
+}
+console.log(subArray([-2,1,-3,4,-1,2,1,-5,4]));
+
