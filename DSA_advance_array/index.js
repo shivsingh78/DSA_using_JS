@@ -154,24 +154,69 @@
 
 // Sort([2, 0, 2, 1, 1, 0]);
 
-function subArray(arr) {
-  let sum = 0
-  let maxSum = -Infinity;
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-    
-    
-    if (sum > maxSum) {
-      maxSum = sum;
-    
-    }
-    if (sum < 0) {
-      sum = 0;
-    }
-    
-  }
- return maxSum
- 
-}
-console.log(subArray([-2,1,-3,4,-1,2,1,-5,4]));
+// maximum sub_array using Kadane's Algorithm
+// function subArray(arr) {
+//   let sum = 0;
+//   let maxSum = -Infinity;
+//   for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i];
 
+//     if (sum > maxSum) {
+//       maxSum = sum;
+//     }
+//     if (sum < 0) {
+//       sum = 0;
+//     }
+//   }
+//   return maxSum;
+// }
+// console.log(subArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+
+// Majority Element
+// function MajorityElement(arr){
+//   let count =1;
+//   let ans = arr[0]
+//   for(let i=1; i<arr.length; i++){
+//    if(count === 0){
+//     ans = arr[i]
+//     count++
+//    }
+//    else if(arr[i]=== ans) {
+
+//     count++;
+//    }
+//    else {
+//     count--
+//    }
+
+//   }
+//   return ans
+// }
+// console.log(MajorityElement([3,2,3]));
+
+// traping rain water
+
+function trapingRainWater(arr) {
+  let left = new Array(arr.length);
+  let right = new Array(arr.length);
+
+  let maxLeft = arr[0],
+    maxRight = arr[arr.length - 1];
+  left[0] = maxLeft;
+  right[right.length - 1] = maxRight;
+  for (let i = 1; i < arr.length; i++) {
+    maxLeft = Math.max(arr[i], maxLeft);
+    left[i] = maxLeft;
+  }
+  for (let i = arr.length - 2; i >= 0; i--) {
+    maxRight = Math.max(arr[i], maxRight);
+    right[i] = maxRight;
+  }
+  let ans = 0;
+  for (let i = 0; i < arr.length; i++) {
+    ans += Math.min(left[i], right[i]) - arr[i];
+  }
+  console.log(ans);
+}
+
+trapingRainWater([4, 2, 0, 3, 2, 5]);
