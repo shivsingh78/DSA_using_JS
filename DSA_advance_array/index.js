@@ -196,27 +196,46 @@
 
 // traping rain water
 
-function trapingRainWater(arr) {
-  let left = new Array(arr.length);
-  let right = new Array(arr.length);
+// function trapingRainWater(arr) {
+//   let left = new Array(arr.length);
+//   let right = new Array(arr.length);
 
-  let maxLeft = arr[0],
-    maxRight = arr[arr.length - 1];
-  left[0] = maxLeft;
-  right[right.length - 1] = maxRight;
-  for (let i = 1; i < arr.length; i++) {
-    maxLeft = Math.max(arr[i], maxLeft);
-    left[i] = maxLeft;
+//   let maxLeft = arr[0],
+//     maxRight = arr[arr.length - 1];
+//   left[0] = maxLeft;
+//   right[right.length - 1] = maxRight;
+//   for (let i = 1; i < arr.length; i++) {
+//     maxLeft = Math.max(arr[i], maxLeft);
+//     left[i] = maxLeft;
+//   }
+//   for (let i = arr.length - 2; i >= 0; i--) {
+//     maxRight = Math.max(arr[i], maxRight);
+//     right[i] = maxRight;
+//   }
+//   let ans = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     ans += Math.min(left[i], right[i]) - arr[i];
+//   }
+//   console.log(ans);
+// }
+
+// trapingRainWater([4, 2, 0, 3, 2, 5]);
+
+Multiple two sum Optimize approach;
+
+function multipleTwoSum(arr,target){
+  let map = new Map();
+  let result=[]
+  for(let i=0; i<arr.length;i++){
+    let compliment = target - arr[i];
+    if(map.has(compliment)){
+     
+      result.push(map.get(compliment),i)
+    }
+    else{
+      map.set(arr[i],i)
+    }
   }
-  for (let i = arr.length - 2; i >= 0; i--) {
-    maxRight = Math.max(arr[i], maxRight);
-    right[i] = maxRight;
-  }
-  let ans = 0;
-  for (let i = 0; i < arr.length; i++) {
-    ans += Math.min(left[i], right[i]) - arr[i];
-  }
-  console.log(ans);
+  return result
 }
-
-trapingRainWater([4, 2, 0, 3, 2, 5]);
+console.log(twoSum([2,8,11,15,7,1],9));
