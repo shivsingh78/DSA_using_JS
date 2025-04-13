@@ -221,21 +221,41 @@
 
 // trapingRainWater([4, 2, 0, 3, 2, 5]);
 
-Multiple two sum Optimize approach;
+//Multiple two sum Optimize approach;
 
-function multipleTwoSum(arr,target){
-  let map = new Map();
-  let result=[]
-  for(let i=0; i<arr.length;i++){
-    let compliment = target - arr[i];
-    if(map.has(compliment)){
-     
-      result.push(map.get(compliment),i)
-    }
-    else{
-      map.set(arr[i],i)
-    }
+// function multipleTwoSum(arr,target){
+//   let map = new Map();
+//   let result=[]
+//   for(let i=0; i<arr.length;i++){
+//     let compliment = target - arr[i];
+//     if(map.has(compliment)){
+
+//       result.push(map.get(compliment),i)
+//     }
+//     else{
+//       map.set(arr[i],i)
+//     }
+//   }
+//   return result
+// }
+// console.log(twoSum([2,8,11,15,7,1],9));
+
+// product of Array Except Self
+// O(n) time and O(n) space
+var productExceptSelf = function (nums) {
+  const n = nums.length;
+  const output = Array(n).fill(1);
+  let prefix = 1;
+  for (let i = 1; i < n; i++) {
+    prefix *= nums[i-1];
+    output[i] *= prefix;
   }
-  return result
-}
-console.log(twoSum([2,8,11,15,7,1],9));
+  let suffix = 1;
+  for (let i = n - 2; i >= 0; i--) {
+    suffix *= nums[i+1];
+    output[i] *= suffix;
+  }
+  return output;
+};
+
+console.log(productExceptSelf([1, 2,6]));
