@@ -247,12 +247,14 @@ var productExceptSelf = function (nums) {
   const output = Array(n).fill(1);
   let prefix = 1;
   for (let i = 1; i < n; i++) {
-    output[i]= prefix *= nums[i-1];
+     prefix *= nums[i-1];
+     output[i]=prefix
      
   }
   let suffix = 1;
   for (let i = n - 2; i >= 0; i--) {
-    output[i] = suffix *= nums[i+1];
+     suffix *= nums[i+1];
+     output[i] = suffix
    
   }
   return output;
