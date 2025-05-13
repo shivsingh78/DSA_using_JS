@@ -242,22 +242,42 @@
 
 // product of Array Except Self
 // O(n) time and O(n) space
-var productExceptSelf = function (nums) {
-  const n = nums.length;
-  const output = Array(n).fill(1);
-  let prefix = 1;
-  for (let i = 1; i < n; i++) {
-     prefix *= nums[i-1];
-     output[i]=prefix
-     
-  }
-  let suffix = 1;
-  for (let i = n - 2; i >= 0; i--) {
-     suffix *= nums[i+1];
-     output[i] = suffix
-   
-  }
-  return output;
-};
+// var productExceptSelf = function (nums) {
+//   const n = nums.length;
+//   const output = Array(n).fill(1);
+//   let prefix = 1;
+//   for (let i = 1; i < n; i++) {
+//      prefix *= nums[i-1];
+//      output[i]=prefix
 
-console.log(productExceptSelf([1, 2,6]));
+//   }
+//   let suffix = 1;
+//   for (let i = n - 2; i >= 0; i--) {
+//      suffix *= nums[i+1];
+//      output[i] = suffix
+
+//   }
+//   return output;
+// };
+
+// console.log(productExceptSelf([1, 2,6]));
+
+function pairSortedSum(arr) {
+  arr.sort((a, b) => a - b);
+  let ans = arr[0];
+  let count = 1;
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] === arr[i - 1]) {
+      count++;
+    } else {
+      count = 1;
+      ans = arr[i];
+    }
+    if(ans> arr.length/2){
+      return ans
+    }
+  }
+  
+  
+}
+console.log(pairSortedSum([1, 1, 8, 1, 2, 4, 1, 5]));

@@ -121,9 +121,13 @@
 function findDuplicates(arr) {
     let arr2=[]
      for(let i=0; i<arr.length; i++){
-          
-    
-          
+          if(arr[i] in arr2){
+            console.log(arr[i]);
+            
+          }
+          else{
+            arr[i].push(arr2)
+          }
          
      }
  }

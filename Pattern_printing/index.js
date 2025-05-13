@@ -1,4 +1,6 @@
-// print right angle triangle
+const { log } = require("console");
+
+//print right angle triangle
 // function rightangleTriangle(rows) {
 //   for (let i = 1; i <= rows; i++) {
 //     let pattern = "";
@@ -15,7 +17,7 @@
 // function rightAngleTriangle(n){
 //      for(let i=1; i<=n; i++){
 //           console.log("*".repeat(i));
-          
+
 //      }
 // }
 // rightAngleTriangle(5)
@@ -32,13 +34,38 @@
 // }
 // reverseRightangleTriangle(5);
 
-// using efficient approach 
+// using efficient approach
 // function reverseRightangleTriangle(n){
 //      for(let i=n; i>=1; i--){
 //           console.log("*".repeat(i));
-          
+
 //      }
 // }
 // reverseRightangleTriangle(5)
 
+// printing * pattern
+const prompt = require("prompt-sync")();
+// let n = parseInt(prompt("enter a number: "))
+// for (let i = 1; i <= n; i++) {
+//   for (let j = 1; j <= n; j++) {
+//     if (i === j || i + j === n + 1) {
+//       process.stdout.write("*");
+//     } else {
+//       process.stdout.write(" ");
+//     }
+//   }
+//   console.log();
+// }
 
+// printing V pattern
+let n = Number(prompt("enter a number : "));
+for (let i = 1; i <= n; i++) {
+  for (let j = 1; j <= n; j++) {
+    if (j === i || j === n - i + 1) {
+      process.stdout.write("*");
+    }
+    process.stdout.write("_");
+  }
+
+  console.log();
+}
