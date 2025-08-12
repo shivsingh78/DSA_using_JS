@@ -58,14 +58,26 @@ const prompt = require("prompt-sync")();
 // }
 
 // printing V pattern
-let n = Number(prompt("enter a number : "));
-for (let i = 1; i <= n; i++) {
-  for (let j = 1; j <= n; j++) {
-    if (j === i || j === n - i + 1) {
-      process.stdout.write("*");
-    }
-    process.stdout.write("_");
-  }
+// let n = Number(prompt("enter a number : "));
+// for (let i = 1; i <= n; i++) {
+//   for (let j = 1; j <= n; j++) {
+//     if (j === i || j === n - i + 1) {
+//       process.stdout.write("*");
+//     }
+//     process.stdout.write("_");
+//   }
 
-  console.log();
+//   console.log();
+// }
+
+// printing pyramid pattern 
+// for inverted pyramid reverse for loop
+
+let n = prompt("ente a number : ")
+
+for (let i = 1; i <=n ; i++) {
+  console.log("_".repeat(n-i)+"*".repeat(2*i-1));
+  
 }
+
+
