@@ -90,32 +90,83 @@
 
 // single element in a sorted array
 
-function singleElement(arr){
-  let left=0;
-  let n=arr.length
-  let right=n-1;
-  if(n==1) return arr[0]
-  while(left<=right){
-    let mid=Math.floor(left+(right-left)/2)
+// function singleElement(arr){
+//   let left=0;
+//   let n=arr.length
+//   let right=n-1;
+//   if(n==1) return arr[0]
+//   while(left<=right){
+//     let mid=Math.floor(left+(right-left)/2)
     
-    if(mid===0 && arr[mid] !== arr[mid+1]) return arr[mid]
-    if(mid=== n-1 && arr[n-1] !== arr[n-2]) return arr[mid]
-      if(arr[mid-1] !== arr[mid] && arr[mid+1] !== arr[mid]) return arr[mid]
-    if(mid%2===0){
+//     if(mid===0 && arr[mid] !== arr[mid+1]) return arr[mid]
+//     if(mid=== n-1 && arr[n-1] !== arr[n-2]) return arr[mid]
+//       if(arr[mid-1] !== arr[mid] && arr[mid] !== arr[mid+1]) return arr[mid]
+//     if(mid%2===0){
     
-   if(arr[mid-1] === arr[mid]){
-      right=mid-1
-    } else{
-      left = mid+1
-    }
-  } else{
-    if(arr[mid-1] === arr[mid]){
-      lefft=mid+1
-    } else{
-      right=mid-1
-    }
-  }
-    }
-  return -1
-}
-console.log(singleElement([1,1,2,3,3,4,4,8,8]));
+//    if(arr[mid-1] === arr[mid]){
+//       right=mid-1
+//     } else{
+//       left = mid+1
+//     }
+//   } else{
+//     if(arr[mid-1] === arr[mid]){
+//       left=mid+1
+//     } else{
+//       right=mid-1
+//     }
+//   }
+//     }
+//   return -1
+// }
+// console.log(singleElement([1,1,2,3,3,4,4,8,8]));
+
+//book allocation problem
+
+// function isValid(arr,n,m,maxAllowedPages){
+//   let students=1,pages=0;
+//   for(let i=0; i<n; i++){
+//     if(arr[i] > maxAllowedPages){
+//       return false
+//     }
+//     if(pages + arr[i] <= maxAllowedPages){
+//       pages += arr[i]
+//     } 
+//     else{
+//       students++
+//     pages = arr[i]
+
+//     }
+    
+//   }
+//   return  students > m ? false : true;
+// }
+// function allocatPage(arr,n,m){
+//   if(m>n){
+//     return -1;
+//   }
+//   let sum =0;
+//   for(let i=0; i<n;i++){
+//     sum += arr[i]
+//   }
+//   //range of possible answer
+//   let ans = -1;
+//   let start =0,end=sum;
+//   while(start<=end){
+//     let mid=Math.floor(start+(end-start)/2)
+
+  
+//   if(isValid(arr,n,m,mid)) {
+//     ans = mid;
+//     end = mid-1;
+//   } else{
+//     start = mid+1
+//   }
+  
+// }
+// return ans
+  
+
+
+// }
+// console.log(allocatPage([2,1,3,4],4,2));
+
