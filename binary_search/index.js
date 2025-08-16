@@ -40,8 +40,8 @@
 //   while (left <= right) {
 //     let mid = Math.floor(left + (right - left) / 2);
 //     if (arr[mid] === target) return mid;
-    //check which part is sorted then apply binary search on it.
-    //left half sorted
+//check which part is sorted then apply binary search on it.
+//left half sorted
 //     if (arr[left] <= arr[mid]) {
 //       if (arr[left] <= target && target <= arr[mid]) {
 //         right = mid - 1;
@@ -82,7 +82,7 @@
 
 //   }
 //   return -1
-  
+
 
 // }
 // console.log(peakIndex([0,2,1,0]));
@@ -97,12 +97,12 @@
 //   if(n==1) return arr[0]
 //   while(left<=right){
 //     let mid=Math.floor(left+(right-left)/2)
-    
+
 //     if(mid===0 && arr[mid] !== arr[mid+1]) return arr[mid]
 //     if(mid=== n-1 && arr[n-1] !== arr[n-2]) return arr[mid]
 //       if(arr[mid-1] !== arr[mid] && arr[mid] !== arr[mid+1]) return arr[mid]
 //     if(mid%2===0){
-    
+
 //    if(arr[mid-1] === arr[mid]){
 //       right=mid-1
 //     } else{
@@ -122,51 +122,93 @@
 
 //book allocation problem
 
-// function isValid(arr,n,m,maxAllowedPages){
-//   let students=1,pages=0;
-//   for(let i=0; i<n; i++){
-//     if(arr[i] > maxAllowedPages){
+// function isValid(arr, n, m, maxAllowedPages) {
+//   let students = 1, pages = 0;
+//   for (let i = 0; i < n; i++) {
+//     if (arr[i] > maxAllowedPages) {
 //       return false
 //     }
-//     if(pages + arr[i] <= maxAllowedPages){
+//     if (pages + arr[i] <= maxAllowedPages) {
 //       pages += arr[i]
-//     } 
-//     else{
+//     }
+//     else {
 //       students++
-//     pages = arr[i]
+//       pages = arr[i]
 
 //     }
-    
+
 //   }
-//   return  students > m ? false : true;
+//   return students > m ? false : true;
 // }
-// function allocatPage(arr,n,m){
-//   if(m>n){
+// function allocatPage(arr, n, m) {
+//   if (m > n) {
 //     return -1;
 //   }
-//   let sum =0;
-//   for(let i=0; i<n;i++){
+//   let sum = 0;
+//   for (let i = 0; i < n; i++) {
 //     sum += arr[i]
 //   }
+  
 //   //range of possible answer
 //   let ans = -1;
-//   let start =0,end=sum;
-//   while(start<=end){
-//     let mid=Math.floor(start+(end-start)/2)
+//   let start = 0, end = sum;
+//   while (start <= end) {
+//     let mid = Math.floor(start + (end - start) / 2)
 
-  
-//   if(isValid(arr,n,m,mid)) {
-//     ans = mid;
-//     end = mid-1;
-//   } else{
-//     start = mid+1
+
+//     if (isValid(arr, n, m, mid)) {
+//       ans = mid;
+//       end = mid - 1;
+//     } else {
+//       start = mid + 1
+//     }
+
 //   }
-  
-// }
-// return ans
-  
+//   return ans
+
 
 
 // }
-// console.log(allocatPage([2,1,3,4],4,2));
+// console.log(allocatPage([2, 1, 3, 4], 4, 2));
+
+// painter's partition  problem
+function isValid(arr,n,m,maxAllowedPartion){
+  let painter=1,length=0
+  for(let i=0; i<n; i++){
+    if(arr[i] > maxAllowedPartion){
+      return false
+    }
+    if(length+arr[i]<=maxAllowedPartion){
+      length+=arr[i]
+    }
+    else{
+      painter++
+      length=arr[i]
+    }
+  }
+  return painter >m ? false : true;
+}
+function painterPartition(arr,n,m){
+  if(m>n){
+    return -1;
+  }
+  let sum=0;
+  for(let i=0 ; i<n; i++){
+    sum += arr[i]
+  }
+  // range of possible answer
+  let ans=-1
+  let start=0,end=sum;
+  while(start<=end){
+    let mid= Math.floor(start+(end-start)/2)
+
+    if(isValid(arr,m,n,mid)){
+      ans=mid
+      end=mid-1
+    }else{
+      start=mid+1
+    }
+  }
+}
+console.log(painterPartition[10,10,10,10],4,2);
 
