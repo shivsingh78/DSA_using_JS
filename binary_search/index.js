@@ -172,43 +172,47 @@
 // console.log(allocatPage([2, 1, 3, 4], 4, 2));
 
 // painter's partition  problem
-function isValid(arr,n,m,maxAllowedPartion){
-  let painter=1,length=0
-  for(let i=0; i<n; i++){
-    if(arr[i] > maxAllowedPartion){
-      return false
-    }
-    if(length+arr[i]<=maxAllowedPartion){
-      length+=arr[i]
-    }
-    else{
-      painter++
-      length=arr[i]
-    }
-  }
-  return painter >m ? false : true;
-}
-function painterPartition(arr,n,m){
-  if(m>n){
-    return -1;
-  }
-  let sum=0;
-  for(let i=0 ; i<n; i++){
-    sum += arr[i]
-  }
-  // range of possible answer
-  let ans=-1
-  let start=0,end=sum;
-  while(start<=end){
-    let mid= Math.floor(start+(end-start)/2)
+// function isPossible(arr,n,m,maxAllowedTime){
+//   let painter=1,time=0
+//   for(let i=0; i<n; i++){
+//     if(arr[i] > maxAllowedTime){
+//       return false
+//     }
+//     if(time+arr[i]<=maxAllowedTime){
+//       time+=arr[i]
+//     }
+//     else{
+//       painter++
+//       time=arr[i]
+//     }
+//   }
+//   return painter > m ? false : true;
+// }
+// function painterPartition(arr,n,m){
+//   if(m>n){
+//     return -1;
+//   }
+//   let sum=0;
+//   for(let i=0 ; i<n; i++){
+//     sum += arr[i]
+//   }
+//   // range of possible answer
+//   let ans=-1
+//   let start=Math.max(...arr);
+//   let end=sum
+//   while(start<=end){
+//     let mid= Math.floor(start+(end-start)/2)
 
-    if(isValid(arr,m,n,mid)){
-      ans=mid
-      end=mid-1
-    }else{
-      start=mid+1
-    }
-  }
-}
-console.log(painterPartition[10,10,10,10],4,2);
+//     if(isPossible(arr,n,m,mid)){
+//       ans=mid
+//       end=mid-1
+//     }else{
+//       start=mid+1
+//     }
+//   }
+//   return ans
+// }
+// console.log(painterPartition([40,30,10,20],4,2));
 
+
+// Aggressive cows
