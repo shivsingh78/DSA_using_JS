@@ -215,4 +215,38 @@
 // console.log(painterPartition([40,30,10,20],4,2));
 
 
-// Aggressive cows
+//lower bound :- the first index where element is greater than or equal to x.
+// function lowerBound(arr,x){
+//      let start=0,end=arr.length-1,ans=-1
+//      while(start<=end){
+//           let mid = Math.floor(start+(end-start)/2)
+//           if(arr[mid]>=x){
+//                ans=mid
+//                end=mid-1 //move left
+//           }
+//           else{
+//                start = mid+1 //move right
+//           }
+//      }
+//      return ans
+// }
+// console.log(lowerBound([1, 2, 4, 4, 5], 4)); // 2
+// console.log(lowerBound([1, 2, 4, 4, 5], 3)); // 2
+
+// //upper Bound :-the first index where element is greater than x
+
+// function upperBound(arr,x){
+//      let start=0,end=arr.length-1,ans=-1;
+//      while(start<=end){
+//           let mid=Math.floor(start+(end-start)/2)
+//           if(arr[mid]>x){
+//                ans = mid;
+//                end=mid-1;
+//           }else{
+//                start= mid+1
+//           }
+//      }
+//      return ans
+// }
+// console.log(upperBound([1, 2, 4, 4, 5], 4)); // 4
+// console.log(upperBound([1, 2, 4, 4, 5], 2)); // 2
