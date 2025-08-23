@@ -250,3 +250,6 @@
 // }
 // console.log(upperBound([1, 2, 4, 4, 5], 4)); // 4
 // console.log(upperBound([1, 2, 4, 4, 5], 2)); // 2
+
+//Koko eating : banana eat banana at given hour with minimum speed
+
