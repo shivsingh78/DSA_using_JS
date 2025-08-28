@@ -46,39 +46,61 @@
 // }
 // console.log(insertionSort([4,1,5,2,3]));
 
-//Merge sort
-function conqor(arr,first,mid,last){
-    let temp = new Array(last-first+1);
-    let i=first,j=mid+1,k=0
-    while(i<=mid && j<=last){
-        if(arr[i]<arr[j]){
-            temp[k++] = arr[i++]
-        } else{
-            temp[k++] = arr[j++]
-        }
-    }
-    while(i<=mid){
-        temp[k++] = arr[i++]
+//Merge sort & count inversion
+// function conqor(arr,first,mid,last){
+//     let temp = new Array(last-first+1);
+//     let i=first,j=mid+1,k=0
+//     let invCount=0
+//     while(i<=mid && j<=last){
+//         if(arr[i]<arr[j]){
+//             temp[k++] = arr[i++]
+//         } else{
+//             temp[k++] = arr[j++]
+//             invCount += mid-i+1
+//         }
+//     }
+//     while(i<=mid){
+//         temp[k++] = arr[i++]
 
-    }
-    while(j<=last){
-        temp[k++] = arr[j++]
-    }
-    let p=0,t=first;
-    while(p<temp.length){
-        arr[t++] = temp[p++]
-    }
+//     }
+//     while(j<=last){
+//         temp[k++] = arr[j++]
+//     }
+//     let p=0,t=first;
+//     while(p<temp.length){
+//         arr[t++] = temp[p++]
+//     }
+//     return invCount
+// }
+
+// function divide(arr,first,last){
+//     if(first >= last) return 0
+//     let mid=Math.floor(first+(last-first)/2)
+//     let leftInv=divide(arr,first,mid)
+//     let rightInv=divide(arr,mid+1,last)
+//     let invCount=conqor(arr,first,mid,last)
+//     return leftInv+rightInv+invCount
+// }
+// let arr=[8,2,1,9,5,12,4,20]
+
+// let totalInversionCount=divide(arr,0,arr.length-1)
+// console.log(totalInversionCount);
+
+// cyclic sort 
+
+function cyclicSort(arr){
+     let i=0
+     while(i<arr.length){
+         
+
+          let currIndex =arr[i]-1
+          if(arr[i] !== arr[currIndex]){
+           [arr[i],arr[currIndex]]=[arr[currIndex],arr[i]]
+          } else{
+               i++
+               
+          }
+     }
+     return arr
 }
-
-function divide(arr,first,last){
-    if(first >= last) return
-    let mid=Math.floor(first+(last-first)/2)
-    divide(arr,first,mid)
-    divide(arr,mid+1,last)
-    conqor(arr,first,mid,last)
-}
-let arr=[8,2,1,9,5,12,4,20]
-
-divide(arr,0,arr.length-1)
-console.log(arr);
-
+console.log(cyclicSort([3,2,4,1]));
