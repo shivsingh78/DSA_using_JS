@@ -44,3 +44,28 @@
 // }
 // console.log(map);
 
+//longest subarray with sum k
+
+function longestSubarray(arr,k){
+     let longest=0;
+     let prefixSum =0;
+     let map= new Map()
+     map.set(prefixSum,-1)
+     for(let i=0; i<arr.length;i++){
+          prefixSum += arr[i]
+          if(map.has(prefixSum-k)){
+               let length = i-map.get(prefixSum-k)
+              
+                    longest = Math.max(length,longest)
+
+               
+          }
+          if(!map.has(prefixSum)){
+               map.set(prefixSum,i)
+          }
+     }
+     return longest
+
+}
+console.log(longestSubarray([10,5,2,7,1,-10],15));
+
