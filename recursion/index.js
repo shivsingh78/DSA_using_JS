@@ -15,14 +15,14 @@
 // }
 // print([1, 2, 3, 4], 0);
 
-// print n to 1 in reverse manner
+//print n to 1 in reverse manner
 
 // function reversePrint(arr, sIndex) {
-// termination condition
+// //termination condition
 //   if (sIndex >= arr.length) return;
-// Recursive case
+// //Recursive case
 //   reversePrint(arr, sIndex + 1);
-// Logic
+// //Logic
 //   console.log(arr[sIndex]);
 // }
 // reversePrint([1, 2, 3, 4], 0);
@@ -74,13 +74,38 @@
 // fibonaci(n - 2, 0, 1);
 
 // case:2 print sum of nth term
-function fib(n){
-     if (n===0 || n===1) return n
+// function fib(n){
+//      if (n===0 || n===1) return n
      
-     return fib(n-1) + fib(n-2)
+//      return fib(n-1) + fib(n-2)
      
      
+// }
+// let n=10
+// console.log(fib(n));
+
+
+//reverce a stack 
+
+function insertAtBottom(stack,element){
+     if(stack.length === 0){
+          stack.push(element)
+          return
+     }
+     const top = stack.pop()
+     insertAtBottom(stack,element)
+     stack.push(top)
 }
-let n=10
-console.log(fib(n));
+function reverse(stack){
+     if(stack.length===0) return
+     const top=stack.pop()
+     reverse(stack)
+     insertAtBottom(stack,top)
+}
+let stack1=[1,2,3,4,5]
+reverse(stack1)
+console.log(stack1);
+
+
+
 
