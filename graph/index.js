@@ -28,7 +28,7 @@ graph.addEdge("B", "C")
 graph.addEdge("A", "D")
 graph.addEdge( "D","C")
 
-//console.log(graph.adjList)
+console.log(graph.adjList)
 
 //bfs traversal :- finding shortest path in unweighted graph
 function bfs(graph,start){
@@ -70,7 +70,7 @@ while(stack.length>0){
 
 }
 }
-dfs(graph.adjList,Object.keys(graph.adjList)[0])
+//dfs(graph.adjList,Object.keys(graph.adjList)[0])
 
 //dfs : Appraoch 2 using recursion 
 
@@ -84,4 +84,33 @@ function dfsTraversal(graph,node,visited=new Set()){
      }
 
 }
-dfsTraversal(graph.adjList,Object.keys(graph.adjList)[0])
+// dfsTraversal(graph.adjList,Object.keys(graph.adjList)[0])
+
+function cycleDetection(graph,node,parent,visited){
+     console.log(node)
+     visited.add(node)
+
+     for(let neighbour of graph[node]){
+          if(!visited.has(neighbour)){
+               if(cycleDetection(graph,neighbour,node,visited)){
+                    return true
+               }
+
+          }else if(neighbour !== parent){
+               
+                    return true
+            
+          }
+     }
+     return false
+
+}
+let visited=new Set()
+for(let node in graph.adjList){
+     if(!visited.has(node)){
+          if(cycleDetection(graph.adjList,node,-1,visited)){
+               console.log("Cycle detected")
+               break;
+          }
+     }
+}
