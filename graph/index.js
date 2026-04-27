@@ -22,11 +22,14 @@ graph.addVertex("B");
 graph.addVertex("C");
 graph.addVertex("D");
 graph.addVertex("E");
+graph.addVertex("G");
+graph.addVertex("H");
 
 graph.addEdge("A", "B")
 graph.addEdge("B", "C")
 graph.addEdge("A", "D")
 graph.addEdge( "D","C")
+graph.addEdge("G","H")
 
 console.log(graph.adjList)
 
@@ -86,7 +89,9 @@ function dfsTraversal(graph,node,visited=new Set()){
 }
 // dfsTraversal(graph.adjList,Object.keys(graph.adjList)[0])
 
-function cycleDetection(graph,node,parent,visited){
+
+//Detect cycle usig dfs
+function cycleDetectionUsingDfs(graph,node,parent,visited){
      console.log(node)
      visited.add(node)
 
@@ -105,12 +110,44 @@ function cycleDetection(graph,node,parent,visited){
      return false
 
 }
+// let visited=new Set()
+// for(let node in graph.adjList){
+//      if(!visited.has(node)){
+//           if(cycleDetectionUsingDfs(graph.adjList,node,-1,visited)){
+//                console.log("Cycle detected")
+//                break;
+//           }
+//      }
+// }
+
+//Detect cycle using bfs 
+
+function cycleDetectionUsingBfs(graph,start,visited){
+
+const queue=[]
+queue.push({node:start,parent:-1})
+visited.add(start)
+while(queue.length>0){
+     const {node:curr,parent}=queue.shift()
+     for(let neighbour of graph[curr]){
+          if(!visited.has(neighbour)){
+               visited.add(neighbour)
+               queue.push({node:neighbour,parent:curr})
+          }else if(neighbour !== parent){
+               return true
+          }
+     }
+     
+}
+return false
+}
+
 let visited=new Set()
 for(let node in graph.adjList){
      if(!visited.has(node)){
-          if(cycleDetection(graph.adjList,node,-1,visited)){
-               console.log("Cycle detected")
-               break;
+          if(cycleDetectionUsingBfs(graph.adjList,node,visited)){
+            console.log("Cycle detected")
+            break;
           }
      }
 }
