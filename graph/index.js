@@ -142,12 +142,41 @@ while(queue.length>0){
 return false
 }
 
+// let visited=new Set()
+// for(let node in graph.adjList){
+//      if(!visited.has(node)){
+//           if(cycleDetectionUsingBfs(graph.adjList,node,visited)){
+//             console.log("Cycle detected")
+//             break;
+//           }
+//      }
+// }
+
+//Cycle detection in directed graph
+
+function cycleDetectionInDirectedGraph(graph,node,visited,recurPath){
+  visited.add(node)
+  recurPath.add(node)
+  for(let neighbour of graph[node]){
+     if(!visited.has(neighbour)){
+          if(cycleDetectionInDirectedGraph(graph,neighbour,visited,recurPath)){
+               return true
+          }
+     }else if(recurPath.has(neighbour)){
+          return true
+     }
+  }
+  recurPath.delete(node)
+  return false
+}
+
 let visited=new Set()
+let recurPath=new Set()
 for(let node in graph.adjList){
      if(!visited.has(node)){
-          if(cycleDetectionUsingBfs(graph.adjList,node,visited)){
-            console.log("Cycle detected")
-            break;
+          if(cycleDetectionInDirectedGraph(graph.adjList,node,visited,recurPath)){
+               console.log("cycle detected")
+               break;
           }
      }
 }
