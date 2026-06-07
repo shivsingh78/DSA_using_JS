@@ -13,7 +13,7 @@ class PriorityQueue {
      }
 }
 
-function prism(graph,start){
+function prim(graph,start){
      const pq=new PriorityQueue()
      const visited=new Set()
 
@@ -55,4 +55,4 @@ const graph ={
      ]
 }
 
-console.log(graph,"A")
+console.log(prim(graph,"A"))
