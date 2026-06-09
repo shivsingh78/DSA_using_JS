@@ -97,10 +97,75 @@ dsu.union(0,1)
 dsu.union(1,2)
 dsu.union(3,4)
 
-console.log(dsu.connected(0,2));
-console.log(dsu.connected(0,3));
+// console.log(dsu.connected(0,2));
+// console.log(dsu.connected(0,3));
 
-dsu.union(0,3)
-console.log(dsu.connected(0,4));
+ dsu.union(0,3)
+// console.log(dsu.connected(0,4));
+
+//Kruskal's algorithms
+
+class Kruskal{
+     constructor(n){
+          this.parent = Array.from({length:n},(_,i)=>i)
+          this.rank=new Array(n).fill(0)
+          this.mstWeight=0;
+          this.mstEdges=[]
+          }
+          find(x){
+               if(this.parent[x]==x) return x
+               return this.parent[x]=this.find(this.parent[x])
+          }
+          union(u,v){
+               let rootU=this.find(u)
+               let rootV=this.find(v)
+
+               if(rootU !== rootV){
+                    if(this.rank[rootU]<this.rank[rootV]){
+                    this.parent[rootU]=rootV
+               }else if(this.rank[rootV]<this.rank[rootU]){
+                    this.parent[rootV]=rootU
+               }else{
+                    this.parent[rootV]=rootU
+                    this.rank[rootU]++
+               }
+               return true
+               }
+               return false
+                    
+          }
+          kruskalMethod(n,edges){
+               edges.sort((a,b)=>a[2]-b[2])
+               for(let [u,v,weight] of edges){
+                    if(this.union(u,v)){
+                         this.mstWeight+=weight;
+                         this.mstEdges.push([u,v,weight])
+                    }
+
+                    if(this.mstEdges.length === n-1) break
+                   
+               }
+               return {
+                    weight: this.mstWeight,
+                    edges: this.mstEdges
+               }
+          }      
+}
+
+const n=6;
+const edges=[[0,1,5],
+     [1,2,2],
+     [2,3,4],
+     [2,3,2],
+     [3,4,8],
+     [4,5,10],
+     [4,5,3],
+     [0,5,1]
+]
+const solver= new Kruskal(n);
+const result=solver.kruskalMethod(n,edges)
+console.log("mst weight",result.weight)
+console.log("mst edges",result.edges)
+
 
 
